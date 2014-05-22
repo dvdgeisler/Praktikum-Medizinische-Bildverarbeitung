@@ -1,8 +1,8 @@
 package de.uni_tuebingen.gris.pmb.utils.listener;
 
-public abstract interface IObserver<T extends IListener<T>>
-{
-  public abstract boolean addListener(T paramT);
+public abstract interface IObserver<T extends IListener<T>> {
+	
+	boolean addListener(T listener);
 
-  public abstract boolean removeListener(T paramT);
+	boolean removeListener(T listener);
 }

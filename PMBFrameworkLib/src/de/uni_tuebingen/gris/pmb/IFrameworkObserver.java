@@ -2,9 +2,12 @@ package de.uni_tuebingen.gris.pmb;
 
 import de.uni_tuebingen.gris.pmb.utils.listener.IObserver;
 
-public abstract interface IFrameworkObserver extends IObserver<IFrameworkListener>
-{
-  public abstract boolean addListener(IFrameworkListener paramIFrameworkListener);
+public interface IFrameworkObserver extends IObserver<IFrameworkListener> {
+	
+	@Override
+	boolean addListener(IFrameworkListener listener);
 
-  public abstract boolean removeListener(IFrameworkListener paramIFrameworkListener);
+	@Override
+	boolean removeListener(IFrameworkListener listener);
+	
 }

@@ -2,9 +2,9 @@ package de.uni_tuebingen.gris.pmb.module;
 
 import de.uni_tuebingen.gris.pmb.utils.listener.IListener;
 
-public abstract interface IModuleListener extends IListener<IModuleListener>
-{
-  public abstract void onModulePerformed(IModulePerformedEvent paramIModulePerformedEvent);
+public interface IModuleListener extends IListener<IModuleListener> {
+  
+	void onModulePerformed(IModulePerformedEvent event);
 
-  public abstract void onModulePropertyChanged(IModulePropertyChangedEvent paramIModulePropertyChangedEvent);
+	void onModulePropertyChanged(IModulePropertyChangedEvent event);
 }

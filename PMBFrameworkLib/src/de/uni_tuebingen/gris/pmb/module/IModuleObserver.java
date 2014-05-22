@@ -2,9 +2,11 @@ package de.uni_tuebingen.gris.pmb.module;
 
 import de.uni_tuebingen.gris.pmb.utils.listener.IObserver;
 
-public abstract interface IModuleObserver extends IObserver<IModuleListener>
-{
-  public abstract boolean addListener(IModuleListener paramIModuleListener);
+public interface IModuleObserver extends IObserver<IModuleListener> {
+	
+	@Override
+	boolean addListener(IModuleListener listener);
 
-  public abstract boolean removeListener(IModuleListener paramIModuleListener);
+	@Override
+  	boolean removeListener(IModuleListener listener);
 }

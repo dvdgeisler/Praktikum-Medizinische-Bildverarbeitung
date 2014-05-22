@@ -2,9 +2,10 @@ package de.uni_tuebingen.gris.pmb.config;
 
 import java.io.Serializable;
 
-public abstract interface IConfigurationProperty<T extends Serializable> extends Serializable
-{
-  public abstract String getKey();
+public interface IConfigurationProperty<T extends Serializable> extends Serializable {
+	
+	String getKey();
 
-  public abstract T getValue();
+	T getValue();
+  
 }

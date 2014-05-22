@@ -3,21 +3,21 @@ package de.uni_tuebingen.gris.pmb.module;
 import de.uni_tuebingen.gris.pmb.utils.listener.IObservable;
 import java.util.Collection;
 
-public abstract interface IModuleManager extends IObservable<IModuleManagerListener>
-{
-  public abstract IModule getModule(String paramString);
+public interface IModuleManager extends IObservable<IModuleManagerListener> {
+  
+	IModule getModule(String id);
 
-  public abstract IModule addModule(String paramString, IModule paramIModule);
+	IModule addModule(String id, IModule module);
 
-  public abstract IModule removeModule(String paramString);
+	IModule removeModule(String id);
 
-  public abstract IModule removeModule(IModule paramIModule);
+	IModule removeModule(IModule module);
 
-  public abstract Collection<IModule> getModules();
+	Collection<IModule> getModules();
 
-  public abstract Collection<IModule> getModules(Class<?> paramClass);
+	Collection<IModule> getModules(Class<?> moduleClass);
 
-  public abstract String getModuleIdentifier(IModule paramIModule);
+	String getModuleIdentifier(IModule module);
 
-  public abstract IModuleManagerObserver getObserver();
+	IModuleManagerObserver getObserver();
 }

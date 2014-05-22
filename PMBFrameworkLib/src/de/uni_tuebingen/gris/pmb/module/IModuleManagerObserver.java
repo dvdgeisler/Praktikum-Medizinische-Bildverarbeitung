@@ -2,17 +2,19 @@ package de.uni_tuebingen.gris.pmb.module;
 
 import de.uni_tuebingen.gris.pmb.utils.listener.IObserver;
 
-public abstract interface IModuleManagerObserver extends IObserver<IModuleManagerListener>
-{
-  public abstract boolean addListener(IModuleManagerListener paramIModuleManagerListener);
+public interface IModuleManagerObserver extends IObserver<IModuleManagerListener> {
+  
+	@Override
+	boolean addListener(IModuleManagerListener listener);
 
-  public abstract boolean removeListener(IModuleManagerListener paramIModuleManagerListener);
+	@Override
+	boolean removeListener(IModuleManagerListener listener);
 
-  public abstract void fireModuleLoadedEvent(IModuleManagerModuleLoadedEvent paramIModuleManagerModuleLoadedEvent);
+	void fireModuleLoadedEvent(IModuleManagerModuleLoadedEvent event);
 
-  public abstract void fireModuleLoadedEvent(IModuleManager paramIModuleManager, IModule paramIModule, String paramString);
+	void fireModuleLoadedEvent(IModuleManager moduleManager, IModule module, String id);
 
-  public abstract void fireModuleUnloadedEvent(IModuleManagerModuleUnloadedEvent paramIModuleManagerModuleUnloadedEvent);
+	void fireModuleUnloadedEvent(IModuleManagerModuleUnloadedEvent event);
 
-  public abstract void fireModuleUnloadedEvent(IModuleManager paramIModuleManager, IModule paramIModule, String paramString);
+	void fireModuleUnloadedEvent(IModuleManager moduleManager, IModule module, String id);
 }
