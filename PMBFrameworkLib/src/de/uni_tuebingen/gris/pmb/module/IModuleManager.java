@@ -21,8 +21,3 @@ public abstract interface IModuleManager extends IObservable<IModuleManagerListe
 
   public abstract IModuleManagerObserver getObserver();
 }
-
-/* Location:           /home/david/Documents/Documents/Studium/Praktikum Medizinische Bildverarbeitung/git/PMBFrameworkLib/src/
- * Qualified Name:     de.uni_tuebingen.gris.pmb.module.IModuleManager
- * JD-Core Version:    0.6.2
- */

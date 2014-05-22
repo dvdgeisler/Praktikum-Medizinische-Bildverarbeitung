@@ -16,8 +16,3 @@ public abstract interface IModuleManagerObserver extends IObserver<IModuleManage
 
   public abstract void fireModuleUnloadedEvent(IModuleManager paramIModuleManager, IModule paramIModule, String paramString);
 }
-
-/* Location:           /home/david/Documents/Documents/Studium/Praktikum Medizinische Bildverarbeitung/git/PMBFrameworkLib/src/
- * Qualified Name:     de.uni_tuebingen.gris.pmb.module.IModuleManagerObserver
- * JD-Core Version:    0.6.2
- */
