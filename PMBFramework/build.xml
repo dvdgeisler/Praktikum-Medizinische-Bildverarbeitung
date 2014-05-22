@@ -1,0 +1,51 @@
+<project name="PMBFramework" default="dist" basedir=".">
+
+	<description>
+        Build the PMBFramework
+    </description>
+
+	<!-- set global properties for this build -->
+	<property name="src" location="src" />
+	<property name="build" location="build" />
+	<property name="dist" location="dist" />
+	<property name="PMBFrameworkLib" location="../PMBFrameworkLib/${dist}/lib/PMBFrameworkLib-latest.jar" />
+	<property name="PMBFrameworkCommonLib" location="../PMBFrameworkCommonLib/${dist}/lib/PMBFrameworkCommonLib-latest.jar" />
+	<property name="PMBConfigurationLib" location="../PMBConfigurationLib/${dist}/lib/PMBConfigurationLib-latest.jar" />
+
+	<target name="init">
+		<!-- Create the time stamp -->
+		<tstamp />
+		<!-- Create the build directory structure used by compile -->
+		<mkdir dir="${build}" />
+		<!-- Create the distribution directory -->
+		<mkdir dir="${dist}/lib" />
+		<copy file="${PMBFrameworkLib}" tofile="${dist}/lib/PMBFrameworkLib.jar" overwrite="true" />
+		<copy file="${PMBFrameworkCommonLib}" tofile="${dist}/lib/PMBFrameworkCommonLib.jar" overwrite="true" />
+		<copy file="${PMBConfigurationLib}" tofile="${dist}/lib/PMBConfigurationLib.jar" overwrite="true" />
+	</target>
+
+	<target name="compile" depends="init" description="compile the source ">
+		<!-- Compile the java code from ${src} into ${build} -->
+		<javac srcdir="${src}" destdir="${build}" classpath="${dist}/lib/PMBFrameworkLib.jar">
+			<classpath>
+				<filelist>
+					<file name="${dist}/lib/PMBFrameworkLib.jar" />
+					<file name="${dist}/lib/PMBFrameworkCommonLib.jar" />
+					<file name="${dist}/lib/PMBConfigurationLib.jar" />
+				</filelist>
+			</classpath>
+		</javac>
+	</target>
+
+	<target name="dist" depends="compile" description="generate the distribution">
+		<!-- Put everything in ${build} into the PMBFramework-${DSTAMP}.jar file -->
+		<jar jarfile="${dist}/lib/PMBFramework-${DSTAMP}.jar" basedir="${build}" />
+		<jar jarfile="${dist}/lib/PMBFramework-latest.jar" basedir="${build}" />
+	</target>
+
+	<target name="clean" description="clean up">
+		<!-- Delete the ${build} and ${dist} directory trees -->
+		<delete dir="${build}" />
+		<delete dir="${dist}" />
+	</target>
+</project>
