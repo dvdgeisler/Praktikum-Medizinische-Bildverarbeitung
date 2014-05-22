@@ -26,7 +26,8 @@
 		<mkdir dir="${dist}/lib" />
 
 		<!-- Put everything in ${build} into the PMBFrameworkLib-${DSTAMP}.jar file -->
-		<jar jarfile="${dist}/lib/MyProject-${DSTAMP}.jar" basedir="${build}" />
+        <jar jarfile="${dist}/lib/PMBFrameworkLib-${DSTAMP}.jar" basedir="${build}" />
+        <jar jarfile="${dist}/lib/PMBFrameworkLib-latest.jar" basedir="${build}" />
 	</target>
 
 	<target name="clean" description="clean up">
