@@ -12,8 +12,19 @@ import javax.xml.bind.Unmarshaller;
 
 public class Configuration extends ConfigurationPropertySection {
 
+	/**
+	 * TODO no doc
+	 */
 	private static final JAXBContext JAXB_CONTEXT;
+	
+	/**
+	 * TODO no doc
+	 */
 	private static final Unmarshaller JAXB_UNMARSHALLER;
+	
+	/**
+	 * TODO no doc
+	 */
 	private static final Marshaller JAXB_MARSHALLER;
 	
 	static {
@@ -31,18 +42,39 @@ public class Configuration extends ConfigurationPropertySection {
 	 */
 	private static final long serialVersionUID = -2489708744364784038L;
 	
+	/**
+	 * TODO no doc
+	 * @param file
+	 * @throws FileNotFoundException
+	 * @throws JAXBException
+	 */
 	public Configuration(String file) throws FileNotFoundException, JAXBException {
 		this(new File(file));
 	}
 	
+	/**
+	 * TODO no doc
+	 * @param file
+	 * @throws FileNotFoundException
+	 * @throws JAXBException
+	 */
 	public Configuration(File file) throws FileNotFoundException, JAXBException {
 		this(new FileReader(file));
 	}
 	
+	/**
+	 * TODO no doc
+	 * @param reader
+	 * @throws JAXBException
+	 */
 	public Configuration(Reader reader) throws JAXBException {
 		this((Configuration) JAXB_UNMARSHALLER.unmarshal(reader));
 	}
 
+	/**
+	 * TODO no doc
+	 * @param unmarshal
+	 */
 	public Configuration(Object unmarshal) {
 		// TODO Auto-generated constructor stub
 	}
