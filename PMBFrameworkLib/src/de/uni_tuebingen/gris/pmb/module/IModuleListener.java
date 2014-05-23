@@ -9,10 +9,4 @@ public interface IModuleListener extends IListener<IModuleListener> {
 	 * @param event
 	 */
 	void onModulePerformed(IModulePerformedEvent event);
-
-	/**
-	 * TODO no doc
-	 * @param event
-	 */
-	void onModulePropertyChanged(IModulePropertyChangedEvent event);
 }
