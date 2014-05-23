@@ -5,8 +5,15 @@ import de.uni_tuebingen.gris.pmb.module.ModuleManager;
 import de.uni_tuebingen.gris.pmb.utils.listener.IObserver;
 
 public class Framework implements IFramework {
-	
+
+	/**
+	 * 
+	 */
 	private final FrameworkObserver observer;
+	
+	/**
+	 * 
+	 */
 	private final ModuleManager moduleManager;
 	 
 	{
@@ -28,6 +35,14 @@ public class Framework implements IFramework {
 	@Override
 	public IObserver<IFrameworkListener> getObserver() {
 		return this.observer;
+	}
+	
+	/**
+	 * TODO no doc
+	 * @param args
+	 */
+	public static void main(String args) {
+		
 	}
 
 }
