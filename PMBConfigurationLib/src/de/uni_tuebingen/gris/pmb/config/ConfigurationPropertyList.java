@@ -8,7 +8,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class ConfigurationPropertyList<T extends Serializable> extends ConfigurationProperty<IConfigurationPropertyValueList<T>> implements IConfigurationPropertyList<T> {
 
 	/**
-	 * 
+	 * TODO no doc
 	 */
 	private static final long serialVersionUID = -6355044378451473220L;
 	

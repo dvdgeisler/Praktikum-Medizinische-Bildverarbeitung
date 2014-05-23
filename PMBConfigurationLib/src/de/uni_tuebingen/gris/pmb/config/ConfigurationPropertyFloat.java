@@ -6,7 +6,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class ConfigurationPropertyFloat extends ConfigurationProperty<Float> implements IConfigurationPropertyFloat {
 
 	/**
-	 * 
+	 * TODO no doc
 	 */
 	private static final long serialVersionUID = -8331402891130909730L;
 

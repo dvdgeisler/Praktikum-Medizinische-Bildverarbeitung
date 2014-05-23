@@ -6,7 +6,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class ConfigurationPropertySection extends ConfigurationProperty<IConfigurationPropertyValueList<IConfigurationProperty<?>>> implements IConfigurationPropertySection {
 
 	/**
-	 * 
+	 * TODO no doc
 	 */
 	private static final long serialVersionUID = 2545736528875246781L;
 
