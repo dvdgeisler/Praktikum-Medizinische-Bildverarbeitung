@@ -84,4 +84,13 @@ public class ModuleManager implements IModuleManager {
 		return this.observer;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public IModuleManagerConfiguration getConfiguration() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
