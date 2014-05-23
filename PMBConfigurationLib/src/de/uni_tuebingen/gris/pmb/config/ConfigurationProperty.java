@@ -43,6 +43,14 @@ public class ConfigurationProperty<T extends Serializable> implements IConfigura
 	
 	/**
 	 * TODO no doc
+	 * @param configurationProperty
+	 */
+	protected ConfigurationProperty(ConfigurationProperty<T> configurationProperty) {
+		this(configurationProperty.key,configurationProperty.value);
+	}
+
+	/**
+	 * TODO no doc
 	 */
 	@Override
 	public String getKey() {
@@ -55,6 +63,14 @@ public class ConfigurationProperty<T extends Serializable> implements IConfigura
 	@Override
 	public T getValue() {
 		return this.value;
+	}
+	
+	/**
+	 * TODO no doc
+	 */
+	@Override
+	public ConfigurationProperty<T> clone() {
+		return new ConfigurationProperty<T>(this);
 	}
 
 }

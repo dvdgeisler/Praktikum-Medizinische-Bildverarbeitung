@@ -25,6 +25,7 @@ public class ConfigurationPropertyValueList<T extends Serializable> implements I
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public int size() {
 		return this.list.size();
 	}
@@ -32,6 +33,7 @@ public class ConfigurationPropertyValueList<T extends Serializable> implements I
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public boolean isEmpty() {
 		return this.list.isEmpty();
 	}
@@ -39,6 +41,7 @@ public class ConfigurationPropertyValueList<T extends Serializable> implements I
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public boolean contains(Object o) {
 		return this.list.contains(o);
 	}
@@ -46,6 +49,7 @@ public class ConfigurationPropertyValueList<T extends Serializable> implements I
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public Iterator<T> iterator() {
 		return this.list.iterator();
 	}
@@ -53,6 +57,7 @@ public class ConfigurationPropertyValueList<T extends Serializable> implements I
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public Object[] toArray() {
 		return this.list.toArray();
 	}
@@ -60,6 +65,7 @@ public class ConfigurationPropertyValueList<T extends Serializable> implements I
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public <R> R[] toArray(R[] a) {
 		return this.list.toArray(a);
 	}
@@ -67,6 +73,7 @@ public class ConfigurationPropertyValueList<T extends Serializable> implements I
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public boolean add(T e) {
 		return this.list.add(e);
 	}
@@ -74,6 +81,7 @@ public class ConfigurationPropertyValueList<T extends Serializable> implements I
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public boolean remove(Object o) {
 		return this.list.remove(o);
 	}
@@ -81,6 +89,7 @@ public class ConfigurationPropertyValueList<T extends Serializable> implements I
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public boolean containsAll(Collection<?> c) {
 		return this.list.containsAll(c);
 	}
@@ -88,6 +97,7 @@ public class ConfigurationPropertyValueList<T extends Serializable> implements I
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public boolean addAll(Collection<? extends T> c) {
 		return this.list.addAll(c);
 	}
@@ -95,6 +105,7 @@ public class ConfigurationPropertyValueList<T extends Serializable> implements I
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public boolean removeAll(Collection<?> c) {
 		return this.list.removeAll(c);
 	}
@@ -102,6 +113,7 @@ public class ConfigurationPropertyValueList<T extends Serializable> implements I
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public boolean retainAll(Collection<?> c) {
 		return this.list.retainAll(c);
 	}
@@ -109,6 +121,7 @@ public class ConfigurationPropertyValueList<T extends Serializable> implements I
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public void clear() {
 		this.list.clear();
 	}
@@ -116,6 +129,7 @@ public class ConfigurationPropertyValueList<T extends Serializable> implements I
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public boolean equals(Object o) {
 		return this.list.equals(o);
 	}
@@ -123,6 +137,7 @@ public class ConfigurationPropertyValueList<T extends Serializable> implements I
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public int hashCode() {
 		return this.list.hashCode();
 	}
