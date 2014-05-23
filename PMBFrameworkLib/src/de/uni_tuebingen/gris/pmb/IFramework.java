@@ -5,6 +5,10 @@ import de.uni_tuebingen.gris.pmb.utils.listener.IObservable;
 
 public interface IFramework extends IObservable<IFrameworkListener> {
 
+	/**
+	 * TODO no doc
+	 * @return
+	 */
 	IModuleManager getModuleManager();
 	
 }

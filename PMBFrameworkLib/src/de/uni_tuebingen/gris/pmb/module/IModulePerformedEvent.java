@@ -5,8 +5,15 @@ import de.uni_tuebingen.gris.pmb.utils.listener.IEvent;
 
 public interface IModulePerformedEvent extends IEvent<IModuleListener> {
   
+	/**
+	 * TODO no doc
+	 * @return
+	 */
 	IImage getImage();
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	IModulePerformedEvent clone();
 }
