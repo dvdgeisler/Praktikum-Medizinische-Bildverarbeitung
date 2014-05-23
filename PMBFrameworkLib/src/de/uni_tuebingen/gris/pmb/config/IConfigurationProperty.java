@@ -4,8 +4,16 @@ import java.io.Serializable;
 
 public interface IConfigurationProperty<T extends Serializable> extends Serializable {
 	
+	/**
+	 * TODO no doc
+	 * @return
+	 */
 	String getKey();
 
+	/**
+	 * TODO no doc
+	 * @return
+	 */
 	T getValue();
   
 }
