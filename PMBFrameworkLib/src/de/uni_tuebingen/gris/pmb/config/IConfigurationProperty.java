@@ -16,4 +16,9 @@ public interface IConfigurationProperty<T extends Serializable> extends Serializ
 	 */
 	T getValue();
   
+	/**
+	 * TODO no doc
+	 * @return
+	 */
+	IConfigurationProperty<T> clone();
 }

@@ -58,4 +58,11 @@ public interface IModuleManager extends IObservable<IModuleManagerListener> {
 	 * {@inheritDoc}
 	 */
 	IModuleManagerObserver getObserver();
+	
+	/**
+	 * TODO no doc
+	 * @return
+	 */
+	IModuleManagerConfiguration getConfiguration();
+	
 }

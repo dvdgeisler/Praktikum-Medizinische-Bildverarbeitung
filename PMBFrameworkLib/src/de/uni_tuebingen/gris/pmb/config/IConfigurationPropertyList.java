@@ -4,4 +4,9 @@ import java.io.Serializable;
 
 public interface IConfigurationPropertyList<T extends Serializable> extends IConfigurationProperty<IConfigurationPropertyValueList<T>> {
 	
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	IConfigurationPropertyList<T> clone();
 }

@@ -1,5 +1,7 @@
 package de.uni_tuebingen.gris.pmb.config;
 
-public interface IConfigurable extends IConfigurationPropertySection {
+import de.uni_tuebingen.gris.pmb.utils.listener.IObservable;
+
+public interface IConfigurable extends IConfigurationPropertySection, IObservable<IConfigurationListener> {
 	
 }
