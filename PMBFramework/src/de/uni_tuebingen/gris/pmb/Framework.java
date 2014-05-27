@@ -41,8 +41,8 @@ public class Framework implements IFramework {
 	 * TODO no doc
 	 * @param args
 	 */
-	public static void main(String args) {
-		
+	public static void main(String[] args) {
+        System.out.println("Hello World");		
 	}
 
 }
