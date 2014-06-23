@@ -5,8 +5,6 @@ import java.util.Collection;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
-import de.uni_tuebingen.gris.pmb.module.ModuleInvalidePropertyValueException;
-import de.uni_tuebingen.gris.pmb.module.ModuleUnknownPropertyException;
 
 @XmlRootElement
 public class ConfigurationPropertySection extends ConfigurationProperty<IConfigurationPropertyValueList<IConfigurationProperty<?>>> implements IConfigurationPropertySection {
@@ -37,19 +35,19 @@ public class ConfigurationPropertySection extends ConfigurationProperty<IConfigu
 	}
 
 	@Override
-	public <T extends Serializable> T setProperty(String key, T value) throws ModuleUnknownPropertyException, ModuleInvalidePropertyValueException {
+	public <T extends Serializable> T setProperty(String key, T value) throws ConfigurationUnknownPropertyException, ConfigurationInvalidePropertyValueException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public String removeProperty(String key) throws ModuleUnknownPropertyException, ModuleInvalidePropertyValueException {
+	public String removeProperty(String key) throws ConfigurationUnknownPropertyException, ConfigurationInvalidePropertyValueException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public <T extends Serializable> T getProperty(String key) throws ModuleUnknownPropertyException {
+	public <T extends Serializable> T getProperty(String key) throws ConfigurationUnknownPropertyException {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -61,7 +59,7 @@ public class ConfigurationPropertySection extends ConfigurationProperty<IConfigu
 	}
 
 	@Override
-	public <T extends Serializable> boolean isValidProperty(String key, T value) throws ModuleUnknownPropertyException {
+	public <T extends Serializable> boolean isValidProperty(String key, T value) throws ConfigurationUnknownPropertyException {
 		// TODO Auto-generated method stub
 		return false;
 	}
