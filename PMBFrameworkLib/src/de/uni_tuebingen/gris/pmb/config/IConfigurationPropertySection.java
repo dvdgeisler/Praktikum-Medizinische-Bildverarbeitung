@@ -3,8 +3,6 @@ package de.uni_tuebingen.gris.pmb.config;
 import java.io.Serializable;
 import java.util.Collection;
 
-import de.uni_tuebingen.gris.pmb.module.ModuleInvalidePropertyValueException;
-import de.uni_tuebingen.gris.pmb.module.ModuleUnknownPropertyException;
 
 public interface IConfigurationPropertySection extends IConfigurationPropertyList<IConfigurationProperty<?>> {
 	
@@ -13,27 +11,27 @@ public interface IConfigurationPropertySection extends IConfigurationPropertyLis
 	 * @param key
 	 * @param value
 	 * @return
-	 * @throws ModuleUnknownPropertyException
-	 * @throws ModuleInvalidePropertyValueException
+	 * @throws ConfigurationUnknownPropertyException
+	 * @throws ConfigurationInvalidePropertyValueException
 	 */
-	<T extends Serializable> T setProperty(String key, T value) throws ModuleUnknownPropertyException, ModuleInvalidePropertyValueException;
+	<T extends Serializable> T setProperty(String key, T value) throws ConfigurationUnknownPropertyException, ConfigurationInvalidePropertyValueException;
 
 	/**
 	 * TODO no doc
 	 * @param key
 	 * @return
-	 * @throws ModuleUnknownPropertyException
-	 * @throws ModuleInvalidePropertyValueException
+	 * @throws ConfigurationUnknownPropertyException
+	 * @throws ConfigurationInvalidePropertyValueException
 	 */
-	String removeProperty(String key) throws ModuleUnknownPropertyException, ModuleInvalidePropertyValueException;
+	String removeProperty(String key) throws ConfigurationUnknownPropertyException, ConfigurationInvalidePropertyValueException;
 
 	/**
 	 * TODO no doc
 	 * @param key
 	 * @return
-	 * @throws ModuleUnknownPropertyException
+	 * @throws ConfigurationUnknownPropertyException
 	 */
-	<T extends Serializable> T getProperty(String key) throws ModuleUnknownPropertyException;
+	<T extends Serializable> T getProperty(String key) throws ConfigurationUnknownPropertyException;
 
 	/**
 	 * TODO no doc
@@ -46,9 +44,9 @@ public interface IConfigurationPropertySection extends IConfigurationPropertyLis
 	 * @param key
 	 * @param value
 	 * @return
-	 * @throws ModuleUnknownPropertyException
+	 * @throws ConfigurationUnknownPropertyException
 	 */
-	<T extends Serializable> boolean isValidProperty(String key, T value) throws ModuleUnknownPropertyException;
+	<T extends Serializable> boolean isValidProperty(String key, T value) throws ConfigurationUnknownPropertyException;
 
 	/**
 	 * TODO no doc

@@ -1,15 +1,16 @@
 package de.uni_tuebingen.gris.pmb.module;
 
+import de.uni_tuebingen.gris.pmb.config.IConfigurable;
 import de.uni_tuebingen.gris.pmb.data.IImage;
 import de.uni_tuebingen.gris.pmb.utils.listener.IObservable;
 
-public interface IModule extends IObservable<IModuleListener> {
+public interface IModule extends IObservable<IModuleListener>, IConfigurable {
   
 	/**
-	 * TODO no doc
-	 * @return
+	 * @{inheritDoc}
 	 */
-	IModuleConfiguration getModuleConfiguration();
+    @Override
+	IModuleConfiguration getConfiguration();
 	
 	/**
 	 * TODO no doc

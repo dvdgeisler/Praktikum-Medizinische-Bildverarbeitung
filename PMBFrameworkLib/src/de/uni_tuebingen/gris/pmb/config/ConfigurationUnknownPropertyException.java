@@ -1,6 +1,6 @@
-package de.uni_tuebingen.gris.pmb.module;
+package de.uni_tuebingen.gris.pmb.config;
 
-public class ModuleUnknownPropertyException extends Exception {
+public class ConfigurationUnknownPropertyException extends Exception {
   
 	/**
 	 * TODO no doc
@@ -10,7 +10,7 @@ public class ModuleUnknownPropertyException extends Exception {
 	/**
 	 * TODO no doc
 	 */
-	public ModuleUnknownPropertyException() {
+	public ConfigurationUnknownPropertyException() {
 		super();
 	}
 
@@ -21,7 +21,7 @@ public class ModuleUnknownPropertyException extends Exception {
 	 * @param enableSuppression
 	 * @param writableStackTrace
 	 */
-	public ModuleUnknownPropertyException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+	public ConfigurationUnknownPropertyException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
 		super(message, cause, enableSuppression, writableStackTrace);
 	}
 
@@ -30,7 +30,7 @@ public class ModuleUnknownPropertyException extends Exception {
 	 * @param message
 	 * @param cause
 	 */
-	public ModuleUnknownPropertyException(String message, Throwable cause) {
+	public ConfigurationUnknownPropertyException(String message, Throwable cause) {
 		super(message, cause);
 	}
 
@@ -38,7 +38,7 @@ public class ModuleUnknownPropertyException extends Exception {
 	 * TODO no doc
 	 * @param message
 	 */
-	public ModuleUnknownPropertyException(String message) {
+	public ConfigurationUnknownPropertyException(String message) {
 		super(message);
 	}
 
@@ -46,7 +46,7 @@ public class ModuleUnknownPropertyException extends Exception {
 	 * TODO no doc
 	 * @param cause
 	 */
-	public ModuleUnknownPropertyException(Throwable cause) {
+	public ConfigurationUnknownPropertyException(Throwable cause) {
 		super(cause);
 	}
 	
