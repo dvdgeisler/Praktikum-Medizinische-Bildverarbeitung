@@ -1,31 +1,33 @@
 package de.uni_tuebingen.gris.pmb.config;
 
+import java.util.ArrayList;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement(name="float")
+@XmlRootElement(name="integers")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class ConfigurationPropertyFloat extends ConfigurationProperty<Float> implements IConfigurationPropertyFloat {
+public class ConfigurationPropertyIntegerList extends ConfigurationProperty<ArrayList<Integer>> implements IConfigurationPropertyIntegerList {
 
 	/**
 	 * TODO no doc
 	 */
-	private static final long serialVersionUID = -8331402891130909730L;
+	private static final long serialVersionUID = -4550055169617827101L;
 
 	@XmlAttribute(required=true, name="value")
-	private Float value;
+	private ArrayList<Integer> value;
 	
-	public ConfigurationPropertyFloat() {
+	public ConfigurationPropertyIntegerList() {
 		super();
 	}
 
-	public ConfigurationPropertyFloat(ConfigurationPropertyFloat configurationProperty) {
+	public ConfigurationPropertyIntegerList(ConfigurationPropertyIntegerList configurationProperty) {
 		this(configurationProperty.getKey(),configurationProperty.getValue());
 	}
 
-	public ConfigurationPropertyFloat(String key, Float value) {
+	public ConfigurationPropertyIntegerList(String key, ArrayList<Integer> value) {
 		super(key);
 		this.value = value;
 	}
@@ -34,12 +36,12 @@ public class ConfigurationPropertyFloat extends ConfigurationProperty<Float> imp
 	 * TODO no doc
 	 */
 	@Override
-	public ConfigurationPropertyFloat clone() {
-		return new ConfigurationPropertyFloat(this);
+	public ConfigurationPropertyIntegerList clone() {
+		return new ConfigurationPropertyIntegerList(this);
 	}
 
 	@Override
-	public Float getValue() {
+	public ArrayList<Integer> getValue() {
 		return this.value;
 	}
 
@@ -59,7 +61,7 @@ public class ConfigurationPropertyFloat extends ConfigurationProperty<Float> imp
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		ConfigurationPropertyFloat other = (ConfigurationPropertyFloat) obj;
+		ConfigurationPropertyIntegerList other = (ConfigurationPropertyIntegerList) obj;
 		if (value == null) {
 			if (other.value != null)
 				return false;

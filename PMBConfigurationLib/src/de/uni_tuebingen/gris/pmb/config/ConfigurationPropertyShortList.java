@@ -1,13 +1,16 @@
 package de.uni_tuebingen.gris.pmb.config;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement(name="float")
+@XmlRootElement(name="shorts")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class ConfigurationPropertyFloat extends ConfigurationProperty<Float> implements IConfigurationPropertyFloat {
+public class ConfigurationPropertyShortList extends ConfigurationProperty<ArrayList<Short>> implements IConfigurationPropertyShortList {
 
 	/**
 	 * TODO no doc
@@ -15,32 +18,36 @@ public class ConfigurationPropertyFloat extends ConfigurationProperty<Float> imp
 	private static final long serialVersionUID = -8331402891130909730L;
 
 	@XmlAttribute(required=true, name="value")
-	private Float value;
+	private final List<Short> value;
 	
-	public ConfigurationPropertyFloat() {
+	{
+		this.value = new ArrayList<Short>();
+	}
+	
+	public ConfigurationPropertyShortList() {
 		super();
 	}
 
-	public ConfigurationPropertyFloat(ConfigurationPropertyFloat configurationProperty) {
+	public ConfigurationPropertyShortList(ConfigurationPropertyShortList configurationProperty) {
 		this(configurationProperty.getKey(),configurationProperty.getValue());
 	}
 
-	public ConfigurationPropertyFloat(String key, Float value) {
+	public ConfigurationPropertyShortList(String key, ArrayList<Short> value) {
 		super(key);
-		this.value = value;
+		this.value.addAll(value);
 	}
 
 	/**
 	 * TODO no doc
 	 */
 	@Override
-	public ConfigurationPropertyFloat clone() {
-		return new ConfigurationPropertyFloat(this);
+	public ConfigurationPropertyShortList clone() {
+		return new ConfigurationPropertyShortList(this);
 	}
 
 	@Override
-	public Float getValue() {
-		return this.value;
+	public ArrayList<Short> getValue() {
+		return (ArrayList<Short>) this.value;
 	}
 
 	@Override
@@ -59,7 +66,7 @@ public class ConfigurationPropertyFloat extends ConfigurationProperty<Float> imp
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		ConfigurationPropertyFloat other = (ConfigurationPropertyFloat) obj;
+		ConfigurationPropertyShortList other = (ConfigurationPropertyShortList) obj;
 		if (value == null) {
 			if (other.value != null)
 				return false;

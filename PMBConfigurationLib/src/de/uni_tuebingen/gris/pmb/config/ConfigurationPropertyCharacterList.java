@@ -1,13 +1,15 @@
 package de.uni_tuebingen.gris.pmb.config;
 
+import java.util.ArrayList;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement(name="float")
+@XmlRootElement(name="chars")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class ConfigurationPropertyFloat extends ConfigurationProperty<Float> implements IConfigurationPropertyFloat {
+public class ConfigurationPropertyCharacterList extends ConfigurationProperty<ArrayList<Character>> implements IConfigurationPropertyCharacterList {
 
 	/**
 	 * TODO no doc
@@ -15,17 +17,17 @@ public class ConfigurationPropertyFloat extends ConfigurationProperty<Float> imp
 	private static final long serialVersionUID = -8331402891130909730L;
 
 	@XmlAttribute(required=true, name="value")
-	private Float value;
+	private ArrayList<Character> value;
 	
-	public ConfigurationPropertyFloat() {
+	public ConfigurationPropertyCharacterList() {
 		super();
 	}
 
-	public ConfigurationPropertyFloat(ConfigurationPropertyFloat configurationProperty) {
+	public ConfigurationPropertyCharacterList(ConfigurationPropertyCharacterList configurationProperty) {
 		this(configurationProperty.getKey(),configurationProperty.getValue());
 	}
 
-	public ConfigurationPropertyFloat(String key, Float value) {
+	public ConfigurationPropertyCharacterList(String key, ArrayList<Character> value) {
 		super(key);
 		this.value = value;
 	}
@@ -34,12 +36,12 @@ public class ConfigurationPropertyFloat extends ConfigurationProperty<Float> imp
 	 * TODO no doc
 	 */
 	@Override
-	public ConfigurationPropertyFloat clone() {
-		return new ConfigurationPropertyFloat(this);
+	public ConfigurationPropertyCharacterList clone() {
+		return new ConfigurationPropertyCharacterList(this);
 	}
 
 	@Override
-	public Float getValue() {
+	public ArrayList<Character> getValue() {
 		return this.value;
 	}
 
@@ -59,7 +61,7 @@ public class ConfigurationPropertyFloat extends ConfigurationProperty<Float> imp
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		ConfigurationPropertyFloat other = (ConfigurationPropertyFloat) obj;
+		ConfigurationPropertyCharacterList other = (ConfigurationPropertyCharacterList) obj;
 		if (value == null) {
 			if (other.value != null)
 				return false;

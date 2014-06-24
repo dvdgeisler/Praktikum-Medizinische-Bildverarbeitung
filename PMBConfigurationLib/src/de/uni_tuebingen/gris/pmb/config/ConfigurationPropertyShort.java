@@ -5,9 +5,9 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement(name="float")
+@XmlRootElement(name="short")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class ConfigurationPropertyFloat extends ConfigurationProperty<Float> implements IConfigurationPropertyFloat {
+public class ConfigurationPropertyShort extends ConfigurationProperty<Short> implements IConfigurationPropertyShort {
 
 	/**
 	 * TODO no doc
@@ -15,17 +15,17 @@ public class ConfigurationPropertyFloat extends ConfigurationProperty<Float> imp
 	private static final long serialVersionUID = -8331402891130909730L;
 
 	@XmlAttribute(required=true, name="value")
-	private Float value;
+	private Short value;
 	
-	public ConfigurationPropertyFloat() {
+	public ConfigurationPropertyShort() {
 		super();
 	}
 
-	public ConfigurationPropertyFloat(ConfigurationPropertyFloat configurationProperty) {
+	public ConfigurationPropertyShort(ConfigurationPropertyShort configurationProperty) {
 		this(configurationProperty.getKey(),configurationProperty.getValue());
 	}
 
-	public ConfigurationPropertyFloat(String key, Float value) {
+	public ConfigurationPropertyShort(String key, Short value) {
 		super(key);
 		this.value = value;
 	}
@@ -34,12 +34,12 @@ public class ConfigurationPropertyFloat extends ConfigurationProperty<Float> imp
 	 * TODO no doc
 	 */
 	@Override
-	public ConfigurationPropertyFloat clone() {
-		return new ConfigurationPropertyFloat(this);
+	public ConfigurationPropertyShort clone() {
+		return new ConfigurationPropertyShort(this);
 	}
 
 	@Override
-	public Float getValue() {
+	public Short getValue() {
 		return this.value;
 	}
 
@@ -59,7 +59,7 @@ public class ConfigurationPropertyFloat extends ConfigurationProperty<Float> imp
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		ConfigurationPropertyFloat other = (ConfigurationPropertyFloat) obj;
+		ConfigurationPropertyShort other = (ConfigurationPropertyShort) obj;
 		if (value == null) {
 			if (other.value != null)
 				return false;

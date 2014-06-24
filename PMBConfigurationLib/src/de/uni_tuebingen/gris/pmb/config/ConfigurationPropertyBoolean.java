@@ -5,27 +5,27 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement(name="float")
+@XmlRootElement(name="bool")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class ConfigurationPropertyFloat extends ConfigurationProperty<Float> implements IConfigurationPropertyFloat {
+public class ConfigurationPropertyBoolean extends ConfigurationProperty<Boolean> implements IConfigurationPropertyBoolean {
 
 	/**
 	 * TODO no doc
 	 */
 	private static final long serialVersionUID = -8331402891130909730L;
-
-	@XmlAttribute(required=true, name="value")
-	private Float value;
 	
-	public ConfigurationPropertyFloat() {
+	@XmlAttribute(required=true, name="value")
+	private Boolean value;
+
+	public ConfigurationPropertyBoolean() {
 		super();
 	}
 
-	public ConfigurationPropertyFloat(ConfigurationPropertyFloat configurationProperty) {
+	public ConfigurationPropertyBoolean(ConfigurationPropertyBoolean configurationProperty) {
 		this(configurationProperty.getKey(),configurationProperty.getValue());
 	}
 
-	public ConfigurationPropertyFloat(String key, Float value) {
+	public ConfigurationPropertyBoolean(String key, Boolean value) {
 		super(key);
 		this.value = value;
 	}
@@ -34,12 +34,12 @@ public class ConfigurationPropertyFloat extends ConfigurationProperty<Float> imp
 	 * TODO no doc
 	 */
 	@Override
-	public ConfigurationPropertyFloat clone() {
-		return new ConfigurationPropertyFloat(this);
+	public ConfigurationPropertyBoolean clone() {
+		return new ConfigurationPropertyBoolean(this);
 	}
 
 	@Override
-	public Float getValue() {
+	public Boolean getValue() {
 		return this.value;
 	}
 
@@ -59,7 +59,7 @@ public class ConfigurationPropertyFloat extends ConfigurationProperty<Float> imp
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		ConfigurationPropertyFloat other = (ConfigurationPropertyFloat) obj;
+		ConfigurationPropertyBoolean other = (ConfigurationPropertyBoolean) obj;
 		if (value == null) {
 			if (other.value != null)
 				return false;

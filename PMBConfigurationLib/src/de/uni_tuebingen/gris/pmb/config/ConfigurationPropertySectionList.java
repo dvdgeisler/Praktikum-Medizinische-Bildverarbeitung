@@ -1,31 +1,33 @@
 package de.uni_tuebingen.gris.pmb.config;
 
+import java.util.ArrayList;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement(name="float")
+@XmlRootElement(name="sections")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class ConfigurationPropertyFloat extends ConfigurationProperty<Float> implements IConfigurationPropertyFloat {
-
+public class ConfigurationPropertySectionList extends ConfigurationProperty<ArrayList<IConfigurationSection>> implements IConfigurationPropertySectionList {
+	
 	/**
 	 * TODO no doc
 	 */
-	private static final long serialVersionUID = -8331402891130909730L;
+	private static final long serialVersionUID = 8390613102316875037L;
 
-	@XmlAttribute(required=true, name="value")
-	private Float value;
+	@XmlElementRef(type=ConfigurationSection.class)
+	private ArrayList<IConfigurationSection> value;
 	
-	public ConfigurationPropertyFloat() {
+	public ConfigurationPropertySectionList() {
 		super();
 	}
 
-	public ConfigurationPropertyFloat(ConfigurationPropertyFloat configurationProperty) {
+	public ConfigurationPropertySectionList(ConfigurationPropertySectionList configurationProperty) {
 		this(configurationProperty.getKey(),configurationProperty.getValue());
 	}
 
-	public ConfigurationPropertyFloat(String key, Float value) {
+	public ConfigurationPropertySectionList(String key, ArrayList<IConfigurationSection> value) {
 		super(key);
 		this.value = value;
 	}
@@ -34,12 +36,12 @@ public class ConfigurationPropertyFloat extends ConfigurationProperty<Float> imp
 	 * TODO no doc
 	 */
 	@Override
-	public ConfigurationPropertyFloat clone() {
-		return new ConfigurationPropertyFloat(this);
+	public ConfigurationPropertySectionList clone() {
+		return new ConfigurationPropertySectionList(this);
 	}
 
 	@Override
-	public Float getValue() {
+	public ArrayList<IConfigurationSection> getValue() {
 		return this.value;
 	}
 
@@ -59,7 +61,7 @@ public class ConfigurationPropertyFloat extends ConfigurationProperty<Float> imp
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		ConfigurationPropertyFloat other = (ConfigurationPropertyFloat) obj;
+		ConfigurationPropertySectionList other = (ConfigurationPropertySectionList) obj;
 		if (value == null) {
 			if (other.value != null)
 				return false;
