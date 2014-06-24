@@ -1,7 +1,7 @@
 package de.uni_tuebingen.gris.pmb.module;
 
-import de.uni_tuebingen.gris.pmb.config.IConfiguration;
+import de.uni_tuebingen.gris.pmb.config.IConfigurationSection;
 
-public interface IModuleManagerConfiguration extends IConfiguration {
+public interface IModuleManagerConfiguration extends IConfigurationSection {
 
 }

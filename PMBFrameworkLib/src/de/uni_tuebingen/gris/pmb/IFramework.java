@@ -12,10 +12,4 @@ public interface IFramework extends IObservable<IFrameworkListener>, IConfigurab
     **/
     IModuleManager getModuleManager();
 
-    /**
-     * @{inheritDoc}
-     **/
-    @Override
-    IFrameworkConfiguration getConfiguration();
-
 }
