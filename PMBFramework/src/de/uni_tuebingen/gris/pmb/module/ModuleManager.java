@@ -1,7 +1,6 @@
 package de.uni_tuebingen.gris.pmb.module;
 
 import java.io.File;
-import java.lang.reflect.InvocationTargetException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
@@ -9,7 +8,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
-import java.util.ServiceLoader;
 import java.util.Map.Entry;
 
 public class ModuleManager implements IModuleManager {
@@ -39,6 +37,10 @@ public class ModuleManager implements IModuleManager {
 		this.modules = new HashMap<String, IModule>();
 	}
 
+	/**
+	 * TODO no doc
+	 * @param configuration
+	 */
 	public ModuleManager(IModuleManagerConfiguration configuration) {
 		this.configuration = configuration;
 		this.classLoader = createClassLoader(configuration.getLoadPaths());
@@ -127,10 +129,17 @@ public class ModuleManager implements IModuleManager {
 		return this.configuration;
 	}
 
+	/**
+	 * TODO no doc
+	 * @return
+	 */
 	private URLClassLoader getClassLoader() {
 		return this.classLoader;
 	}
 
+	/**
+	 * TODO no doc
+	 */
 	@Override
 	public void loadModules() {
 		for(IModuleConfiguration moduleConfiguration : this.getConfiguration().getModuleConfigurations())
@@ -139,23 +148,45 @@ public class ModuleManager implements IModuleManager {
 				IModule module;
 				
 				moduleClass = (Class<? extends IModule>) this.getClassLoader().loadClass(moduleConfiguration.getModuleName());
-				module = moduleClass.getConstructor(IModuleConfiguration.class).newInstance(moduleConfiguration);
+				module = moduleClass.newInstance();
+				module.setConfiguration(moduleConfiguration);
+				module.setModuleManager(this);
 				this.addModule(moduleConfiguration.getModuleId(), module);
-			} catch (ClassNotFoundException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException | NoSuchMethodException | SecurityException e) {
+				this.getObserver().fireModuleLoadedEvent(this, module, moduleConfiguration.getModuleId());
+			} catch (ClassNotFoundException | InstantiationException | IllegalAccessException | IllegalArgumentException | SecurityException e) {
 				e.printStackTrace();
 			}
+		
+		for(Entry<String, IModule> kvp : this.modules.entrySet()) {
+			kvp.getValue().initialize();
+			this.getObserver().fireModuleInitializedEvent(this, kvp.getValue(), kvp.getKey());
+		}
 	}
 
+	/**
+	 * TODO no doc
+	 * @param loadPaths
+	 * @return
+	 */
 	private static URLClassLoader createClassLoader(List<String> loadPaths) {
 		List<URL> urls;
 		
 		urls = new ArrayList<URL>(loadPaths.size());
-		for(String path : loadPaths)
+		for(String path : loadPaths) {
+			File dir;
+			
+			dir = new File(path);
 			try {
-				urls.add(new File(path).toURI().toURL());
+				if(dir.isDirectory())
+					for(File file : dir.listFiles())
+						if(file.getName().endsWith(".jar"))
+							urls.add(file.toURI().toURL());
+				if(dir.isFile() && dir.getName().endsWith(".jar"))
+					urls.add(dir.toURI().toURL());
 			} catch (MalformedURLException e) {
 				e.printStackTrace();
 			}
+		}
 		
 		return new URLClassLoader(urls.toArray(new URL[0]),ModuleManager.class.getClassLoader());
 	}

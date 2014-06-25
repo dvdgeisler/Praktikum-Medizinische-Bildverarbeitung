@@ -36,4 +36,9 @@ public class FrameworkConfiguration extends ConfigurationSectionDelegater implem
 		return new FrameworkConfiguration(config);
 	}
 
+	@Override
+	public String getResultPath() {
+		return this.getConfig().getString(IFrameworkConfiguration.PROPERTY_KEY_RESULT_PATH);
+	}
+
 }
