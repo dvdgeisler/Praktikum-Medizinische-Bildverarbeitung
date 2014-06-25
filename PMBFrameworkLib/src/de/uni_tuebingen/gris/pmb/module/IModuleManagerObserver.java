@@ -43,4 +43,32 @@ public interface IModuleManagerObserver extends IObserver<IModuleManagerListener
 	 * @param id
 	 */
 	void fireModuleUnloadedEvent(IModuleManager moduleManager, IModule module, String id);
+
+	/**
+	 * TODO no doc
+	 * @param event
+	 */
+	void fireModuleInitializedEvent(IModuleManagerModuleInitializedEvent event);
+	
+	/**
+	 * TODO no doc
+	 * @param moduleManager
+	 * @param module
+	 * @param id
+	 */
+	void fireModuleInitializedEvent(IModuleManager moduleManager, IModule module, String id);
+
+	/**
+	 * TODO no doc
+	 * @param event
+	 */
+	void fireModuleDeinitializedEvent(IModuleManagerModuleDeinitializedEvent event);
+	
+	/**
+	 * TODO no doc
+	 * @param moduleManager
+	 * @param module
+	 * @param id
+	 */
+	void fireModuleDeinitializedEvent(IModuleManager moduleManager, IModule module, String id);
 }

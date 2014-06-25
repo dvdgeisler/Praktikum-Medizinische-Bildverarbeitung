@@ -11,5 +11,7 @@ public interface IFramework extends IObservable<IFrameworkListener>, IConfigurab
      * @return
     **/
     IModuleManager getModuleManager();
+    
+    void loadFramework();
 
 }

@@ -15,4 +15,16 @@ public interface IModuleManagerListener extends IListener<IModuleManagerListener
 	 * @param event
 	 */
 	void onModuleUnloaded(IModuleManagerModuleUnloadedEvent event);
+
+	/**
+	 * TODO no doc
+	 * @param event
+	 */
+	void onModuleInitialized(IModuleManagerModuleInitializedEvent event);
+
+	/**
+	 * TODO no doc
+	 * @param event
+	 */
+	void onModuleDeinitialized(IModuleManagerModuleDeinitializedEvent event);
 }
