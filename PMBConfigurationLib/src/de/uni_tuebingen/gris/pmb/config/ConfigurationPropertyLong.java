@@ -5,9 +5,9 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement(name="float")
+@XmlRootElement(name="long")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class ConfigurationPropertyFloat extends ConfigurationProperty<Float> implements IConfigurationPropertyFloat {
+public class ConfigurationPropertyLong extends ConfigurationProperty<Long> implements IConfigurationPropertyLong {
 
 	/**
 	 * TODO no doc
@@ -15,17 +15,17 @@ public class ConfigurationPropertyFloat extends ConfigurationProperty<Float> imp
 	private static final long serialVersionUID = -8331402891130909730L;
 
 	@XmlAttribute(required=true, name="value")
-	private Float value;
+	private Long value;
 	
-	public ConfigurationPropertyFloat() {
+	public ConfigurationPropertyLong() {
 		super();
 	}
 
-	public ConfigurationPropertyFloat(ConfigurationPropertyFloat configurationProperty) {
+	public ConfigurationPropertyLong(ConfigurationPropertyLong configurationProperty) {
 		this(configurationProperty.getKey(),configurationProperty.getValue());
 	}
 
-	public ConfigurationPropertyFloat(String key, Float value) {
+	public ConfigurationPropertyLong(String key, Long value) {
 		super(key);
 		this.value = value;
 	}
@@ -34,12 +34,12 @@ public class ConfigurationPropertyFloat extends ConfigurationProperty<Float> imp
 	 * TODO no doc
 	 */
 	@Override
-	public ConfigurationPropertyFloat clone() {
-		return new ConfigurationPropertyFloat(this);
+	public ConfigurationPropertyLong clone() {
+		return new ConfigurationPropertyLong(this);
 	}
 
 	@Override
-	public Float getValue() {
+	public Long getValue() {
 		return this.value;
 	}
 
@@ -59,7 +59,7 @@ public class ConfigurationPropertyFloat extends ConfigurationProperty<Float> imp
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		ConfigurationPropertyFloat other = (ConfigurationPropertyFloat) obj;
+		ConfigurationPropertyLong other = (ConfigurationPropertyLong) obj;
 		if (value == null) {
 			if (other.value != null)
 				return false;

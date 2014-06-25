@@ -2,12 +2,13 @@ package de.uni_tuebingen.gris.pmb.config;
 
 import java.io.Serializable;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlValue;
+import javax.xml.bind.annotation.XmlID;
 
-@XmlRootElement
-public class ConfigurationProperty<T extends Serializable> implements IConfigurationProperty<T> {
+@XmlAccessorType(XmlAccessType.FIELD)
+public abstract class ConfigurationProperty<T extends Serializable> implements IConfigurationProperty<T> {
 
 	/**
 	 * TODO no doc
@@ -17,14 +18,9 @@ public class ConfigurationProperty<T extends Serializable> implements IConfigura
 	/**
 	 * TODO no doc
 	 */
-	@XmlAttribute
+	@XmlAttribute(required=true, name="name")
+	@XmlID
 	private String key;
-	
-	/**
-	 * TODO no doc
-	 */
-	@XmlValue	
-	private T value;
 	
 	/**
 	 * TODO no doc
@@ -36,17 +32,16 @@ public class ConfigurationProperty<T extends Serializable> implements IConfigura
 	 * @param key
 	 * @param value
 	 */
-	public ConfigurationProperty(String key, T value) {
+	public ConfigurationProperty(String key) {
 		this.key = key;
-		this.value = value;
 	}
 	
 	/**
 	 * TODO no doc
 	 * @param configurationProperty
 	 */
-	protected ConfigurationProperty(ConfigurationProperty<T> configurationProperty) {
-		this(configurationProperty.key,configurationProperty.value);
+	protected ConfigurationProperty(IConfigurationProperty<T> configurationProperty) {
+		this(configurationProperty.getKey());
 	}
 
 	/**
@@ -56,21 +51,36 @@ public class ConfigurationProperty<T extends Serializable> implements IConfigura
 	public String getKey() {
 		return this.key;
 	}
-
-	/**
-	 * TODO no doc
-	 */
-	@Override
-	public T getValue() {
-		return this.value;
-	}
 	
 	/**
 	 * TODO no doc
 	 */
 	@Override
-	public ConfigurationProperty<T> clone() {
-		return new ConfigurationProperty<T>(this);
+	public abstract ConfigurationProperty<T> clone();
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((key == null) ? 0 : key.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ConfigurationProperty other = (ConfigurationProperty) obj;
+		if (key == null) {
+			if (other.key != null)
+				return false;
+		} else if (!key.equals(other.key))
+			return false;
+		return true;
 	}
 
 }

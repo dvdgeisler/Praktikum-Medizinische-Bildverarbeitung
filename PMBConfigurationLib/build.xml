@@ -20,7 +20,7 @@
 		<copy file="${PMBFrameworkLib}" tofile="${dist}/lib/PMBFrameworkLib.jar" overwrite="true" />
 	</target>
 
-	<target name="compile" depends="init" description="compile the source ">		
+	<target name="compile" depends="init" description="compile the source ">
 		<!-- Compile the java code from ${src} into ${build} -->
 		<javac srcdir="${src}" destdir="${build}" classpath="${dist}/lib/PMBFrameworkLib.jar"/>
 	</target>

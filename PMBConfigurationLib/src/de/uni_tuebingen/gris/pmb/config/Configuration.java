@@ -4,13 +4,41 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.Reader;
+import java.io.StringWriter;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlSeeAlso;
 
-public class Configuration extends ConfigurationPropertySection {
+@XmlRootElement(name="config")
+@XmlSeeAlso({
+	ConfigurationPropertyBoolean.class,
+	ConfigurationPropertyCharacter.class,
+	ConfigurationPropertyByte.class,
+	ConfigurationPropertyFloat.class,
+	ConfigurationPropertySection.class,
+	ConfigurationPropertyString.class,
+	ConfigurationPropertyInteger.class,
+	ConfigurationPropertyDouble.class,
+	ConfigurationPropertyLong.class,
+	ConfigurationPropertyShort.class,
+	ConfigurationPropertyBooleanList.class,
+	ConfigurationPropertyCharacterList.class,
+	ConfigurationPropertyByteList.class,
+	ConfigurationPropertyFloatList.class,
+	ConfigurationPropertySectionList.class,
+	ConfigurationPropertyStringList.class,
+	ConfigurationPropertyIntegerList.class,
+	ConfigurationPropertyDoubleList.class,
+	ConfigurationPropertyLongList.class,
+	ConfigurationPropertyShortList.class})
+@XmlAccessorType(XmlAccessType.FIELD)
+public class Configuration extends ConfigurationSection implements IConfiguration {
 
 	/**
 	 * TODO no doc
@@ -41,7 +69,7 @@ public class Configuration extends ConfigurationPropertySection {
 	 * 
 	 */
 	private static final long serialVersionUID = -2489708744364784038L;
-	
+
 	/**
 	 * TODO no doc
 	 * @param file
@@ -75,8 +103,30 @@ public class Configuration extends ConfigurationPropertySection {
 	 * TODO no doc
 	 * @param unmarshal
 	 */
-	public Configuration(Object unmarshal) {
+	protected Configuration(Configuration unmarshal) {
+		super(unmarshal);
+	}
+
+	/**
+	 * TODO no doc
+	 * @param unmarshal
+	 */
+	public Configuration() {
 		// TODO Auto-generated constructor stub
 	}
 
+	@Override
+	public String toString() {
+		StringWriter sw;
+		
+		sw = new StringWriter();
+		try {
+			JAXB_MARSHALLER.marshal(this, sw);
+		} catch (JAXBException e) {
+			e.printStackTrace();
+		}
+		
+		return sw.toString();
+	}
+	
 }
