@@ -1,5 +1,6 @@
 package de.uni_tuebingen.gris.pmb;
 
+import de.uni_tuebingen.gris.pmb.config.ConfigurationRootModuleNotSpecifiedException;
 import de.uni_tuebingen.gris.pmb.module.IModuleManager;
 import de.uni_tuebingen.gris.pmb.module.ModuleManager;
 import de.uni_tuebingen.gris.pmb.utils.listener.IObserver;
@@ -23,7 +24,6 @@ public class Framework implements IFramework {
 
     {
         this.observer = new FrameworkObserver();
-        this.moduleManager = new ModuleManager();
     }
 
     /**
@@ -31,6 +31,7 @@ public class Framework implements IFramework {
      */
     public Framework(FrameworkConfiguration configuration) {
         this.configuration = configuration;
+        this.moduleManager = new ModuleManager(this.getConfiguration().getModuleManagerConfiguration());
     }
 
     /**
@@ -51,8 +52,9 @@ public class Framework implements IFramework {
 
     /**
      * TODO no doc
+     * @throws ConfigurationRootModuleNotSpecifiedException 
      */
-    private void run() {
+    private void run() throws ConfigurationRootModuleNotSpecifiedException {
         /*
          * TODO: write file down
          */
@@ -67,9 +69,16 @@ public class Framework implements IFramework {
         FrameworkConfiguration c;
         Framework f;
 
-        c = FrameworkConfiguration.parseArguments(args);
-        f = new Framework(c);
-        f.run();
+        try {
+	        c = FrameworkConfiguration.parseArguments(args);
+
+	        f = new Framework(c);
+			f.run();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.exit(1);
+		}
 
         /*
          * success
