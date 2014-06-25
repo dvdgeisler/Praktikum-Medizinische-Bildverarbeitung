@@ -409,6 +409,8 @@ public class ConfigurationTest {
 		
 		key = "test";
 		expected = new ArrayList<Byte>() {
+			private static final long serialVersionUID = 1L;
+
 			{
 				this.add((byte) 1);
 				this.add((byte) 2);
@@ -455,6 +457,7 @@ public class ConfigurationTest {
 		
 		key = "test";
 		expected = new ArrayList<Short>() {
+			private static final long serialVersionUID = 1L;
 			{
 				this.add((short)1);
 				this.add((short)2);
@@ -501,6 +504,7 @@ public class ConfigurationTest {
 		
 		key = "test";
 		expected = new ArrayList<Integer>() {
+			private static final long serialVersionUID = 1L;
 			{
 				this.add(1);
 				this.add(2);
@@ -547,6 +551,7 @@ public class ConfigurationTest {
 		
 		key = "test";
 		expected = new ArrayList<Long>() {
+			private static final long serialVersionUID = 1L;
 			{
 				this.add((long) 1);
 				this.add((long) 2);
@@ -593,6 +598,7 @@ public class ConfigurationTest {
 		
 		key = "test";
 		expected = new ArrayList<Float>() {
+			private static final long serialVersionUID = 1L;
 			{
 				this.add((float) 1);
 				this.add((float) 2);
@@ -639,6 +645,7 @@ public class ConfigurationTest {
 		
 		key = "test";
 		expected = new ArrayList<Double>() {
+			private static final long serialVersionUID = 1L;
 			{
 				this.add((double) 1);
 				this.add((double) 2);
@@ -685,6 +692,7 @@ public class ConfigurationTest {
 		
 		key = "test";
 		expected = new ArrayList<Character>() {
+			private static final long serialVersionUID = 1L;
 			{
 				this.add((char) 1);
 				this.add((char) 2);
@@ -731,6 +739,7 @@ public class ConfigurationTest {
 		
 		key = "test";
 		expected = new ArrayList<Boolean>() {
+			private static final long serialVersionUID = 1L;
 			{
 				this.add(true);
 				this.add(false);
@@ -777,6 +786,7 @@ public class ConfigurationTest {
 		
 		key = "test";
 		expected = new ArrayList<String>() {
+			private static final long serialVersionUID = 1L;
 			{
 				this.add("str 1");
 				this.add("str 2");
@@ -823,6 +833,7 @@ public class ConfigurationTest {
 		
 		key = "test";
 		expected = new ArrayList<IConfigurationSection>() {
+			private static final long serialVersionUID = 1L;
 			{
 				this.add(new ConfigurationSection());
 				this.get(0).setBoolean("bool_test", true);
