@@ -111,7 +111,10 @@ public class Framework implements IFramework {
     	IImage image;
     	
         module = this.getModuleManager().getModule(this.getConfiguration().getRootModuleId());
-        image = module.perform();
+        image = null;
+        
+        for(int i = 0; i < 10000; i++)
+        	image = module.perform();
         
         Highgui.imwrite(this.getConfiguration().getResultPath(),image.getData());
     }
