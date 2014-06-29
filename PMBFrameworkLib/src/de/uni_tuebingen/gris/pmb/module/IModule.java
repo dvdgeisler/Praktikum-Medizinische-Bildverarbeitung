@@ -44,4 +44,9 @@ public interface IModule extends IObservable<IModuleListener>, IConfigurable {
 	 * TODO no doc
 	 */
 	void initialize();
+	
+	/**
+	 * TODO no doc
+	 */
+	void deinitialized();
 }
