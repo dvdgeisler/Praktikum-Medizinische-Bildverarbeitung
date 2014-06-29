@@ -10,7 +10,7 @@ public abstract class DefaultModule implements IModule {
 	private final IModuleObserver observer;
 	
 	public DefaultModule() {
-		this.observer = new DefaultModuleObserver();
+		this.observer = new ModuleObserver();
 	}
 
 	@Override

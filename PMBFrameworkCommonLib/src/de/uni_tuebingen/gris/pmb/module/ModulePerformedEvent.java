@@ -19,7 +19,7 @@ public class ModulePerformedEvent extends DefaultEvent<IModuleListener> implemen
 	 * TODO no doc
 	 * @param event
 	 */
-	protected ModulePerformedEvent(ModulePerformedEvent event) {
+	protected ModulePerformedEvent(IModulePerformedEvent event) {
 		super(event.getSource(),event.getObserver());
 		this.image = event.getImage();
 	}
