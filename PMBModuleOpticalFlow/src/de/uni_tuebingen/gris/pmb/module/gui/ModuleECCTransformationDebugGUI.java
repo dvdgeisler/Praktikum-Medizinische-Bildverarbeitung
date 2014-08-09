@@ -11,7 +11,6 @@ import java.awt.Rectangle;
 import java.awt.Shape;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Area;
-import java.util.LinkedList;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -20,14 +19,15 @@ import javax.swing.JTextField;
 import org.opencv.core.Mat;
 
 import de.uni_tuebingen.gris.pmb.module.IModulePerformedEvent;
-import de.uni_tuebingen.gris.pmb.module.ModuleOpticalFlowRigidTransform;
+import de.uni_tuebingen.gris.pmb.module.ModuleECCTransform;
 
-public class ModuleOpticalFlowRigidTransformationDebugGUI extends ModuleDebugFrame<ModuleOpticalFlowRigidTransform> {
+public class ModuleECCTransformationDebugGUI extends ModuleDebugFrame<ModuleECCTransform> {
 
 	private static final long serialVersionUID = 5050514185808069350L;
+	private static final Area area = new Area();
 
-	public ModuleOpticalFlowRigidTransformationDebugGUI(ModuleOpticalFlowRigidTransform moduleOpticalFlowRigidTransform) {
-		super(moduleOpticalFlowRigidTransform);
+	public ModuleECCTransformationDebugGUI(ModuleECCTransform moduleECCTransform) {
+		super(moduleECCTransform);
 	}
 
 	@Override
@@ -39,7 +39,8 @@ public class ModuleOpticalFlowRigidTransformationDebugGUI extends ModuleDebugFra
 	public Component getEventDetails(IModulePerformedEvent event) {
 		JPanel panel;
 		GridBagLayout layout;
-		Mat localTransform, globalTransform;
+		Mat localTransform;
+		final Mat globalTransform;
 		
 		panel = new JPanel();
 		layout = new GridBagLayout();
@@ -186,23 +187,20 @@ public class ModuleOpticalFlowRigidTransformationDebugGUI extends ModuleDebugFra
 				int w, h;
 				
 				g = (Graphics2D) gg;
-				a = new Area();
 				w = this.getWidth()-2;
 				h = this.getHeight()-2;
 				super.paint(g);
 				
-				for(Mat transform : (LinkedList<Mat>)ModuleOpticalFlowRigidTransformationDebugGUI.this.getModule().getTransform().clone()) {
-					AffineTransform affineTransform;
-					Shape rectangle;
-					
-					affineTransform = new AffineTransform(
-							transform.get(0, 0)[0], transform.get(1, 0)[0], transform.get(0, 1)[0],
-							transform.get(1, 1)[0], transform.get(0, 2)[0], transform.get(1, 2)[0]);
-					affineTransform.scale(1d/affineTransform.getScaleX(), 1d/affineTransform.getScaleY());
-					
-					rectangle = affineTransform.createTransformedShape(new Rectangle(0,0,1920,1088));
-					a.add(new Area(rectangle));
-				}
+				AffineTransform t;
+				Shape rectangle;
+				t = new AffineTransform(
+				globalTransform.get(0, 0)[0], globalTransform.get(1, 0)[0], globalTransform.get(0, 1)[0],
+				globalTransform.get(1, 1)[0], globalTransform.get(0, 2)[0], globalTransform.get(1, 2)[0]);
+		
+				rectangle = t.createTransformedShape(new Rectangle(0,0,1920,1088));
+				area.add(new Area(rectangle));
+				
+				a = (Area) area.clone();
 				a.transform(AffineTransform.getScaleInstance(-1, -1));
 				a.transform(AffineTransform.getTranslateInstance(-a.getBounds().getX(), -a.getBounds().getY()));
 				if(a.getBounds().getWidth()> w)
@@ -211,6 +209,8 @@ public class ModuleOpticalFlowRigidTransformationDebugGUI extends ModuleDebugFra
 					a.transform(AffineTransform.getScaleInstance(h/a.getBounds().getHeight(), h/a.getBounds().getHeight()));
 				
 				g.setBackground(Color.white);
+				g.setColor(Color.lightGray);
+				g.fill(a);
 				g.setColor(Color.darkGray);
 				g.draw(a);
 			}

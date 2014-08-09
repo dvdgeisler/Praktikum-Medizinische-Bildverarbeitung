@@ -6,12 +6,13 @@ import java.util.logging.Logger;
 import org.opencv.core.Core;
 import org.opencv.core.CvType;
 import org.opencv.core.Mat;
+import org.opencv.imgproc.Imgproc;
 import org.opencv.video.Video;
 
 import de.uni_tuebingen.gris.pmb.data.IImage;
-import de.uni_tuebingen.gris.pmb.module.gui.ModuleOpticalFlowRigidTransformationDebugGUI;
+import de.uni_tuebingen.gris.pmb.module.gui.ModuleECCTransformationDebugGUI;
 
-public class ModuleOpticalFlowRigidTransform extends DefaultModule implements IModule {
+public class ModuleECCTransform extends DefaultModule implements IModule {
 
 	private final static String CONFIGURATION_KEY_IMAGE_SOURCE = "source";
 	private final static String CONFIGURATION_KEY_FULL_AFFINE = "fullAffine";
@@ -21,7 +22,7 @@ public class ModuleOpticalFlowRigidTransform extends DefaultModule implements IM
 	private Mat prev;
 	private boolean fullAffine;
 	private boolean debug;
-	private ModuleOpticalFlowRigidTransformationDebugGUI debugGui;
+	private ModuleECCTransformationDebugGUI debugGui;
 	private final LinkedList<Mat> transforms;
 	
 	{
@@ -36,7 +37,7 @@ public class ModuleOpticalFlowRigidTransform extends DefaultModule implements IM
 	/**
 	 * TODO no doc
 	 */
-	public ModuleOpticalFlowRigidTransform() {
+	public ModuleECCTransform() {
 		super();
 	}
 
@@ -60,7 +61,7 @@ public class ModuleOpticalFlowRigidTransform extends DefaultModule implements IM
 					String.format("debug mode not specified in configuration! use default: %s", Boolean.toString(this.isDebug())));
 		
 		if(this.isDebug())
-			this.setDebugGui(new ModuleOpticalFlowRigidTransformationDebugGUI(this));
+			this.setDebugGui(new ModuleECCTransformationDebugGUI(this));
 		
 		this.getObserver().fireModuleInitializedEvent(this);
 	}
@@ -79,20 +80,23 @@ public class ModuleOpticalFlowRigidTransform extends DefaultModule implements IM
 	@Override
 	public IImage perform() {
 		IImage img;
-		Mat from, to;
+		Mat to;
+		Mat fromGray, toGray;
 		Mat transform, globalTransform;
 
 		// invoke image source
 		img = this.getSource().perform();
 		to = img.getData();
-		
+		toGray = new Mat();
+		Imgproc.cvtColor(to, toGray, Imgproc.COLOR_RGB2GRAY);
+
 		if(this.getTransform().size() == 0) {
-			from = to;
-			transform = Mat.eye(3, 3, CvType.CV_64FC1);
+			transform = Mat.eye(3, 3, CvType.CV_32FC1);
 			globalTransform = transform;
 		} else {
-			from = this.getPrev();
-			transform = Video.estimateRigidTransform(from, to, true);
+			fromGray = this.getPrev();
+			transform = Mat.eye(2, 3, CvType.CV_32FC1);
+			Video.findTransformECC(fromGray, toGray, transform, Video.MOTION_TRANSLATION);
 			transform.push_back(Mat.zeros(1, 3, transform.type()));
 			transform.put(2, 2, 1d);
 			
@@ -108,7 +112,7 @@ public class ModuleOpticalFlowRigidTransform extends DefaultModule implements IM
 		
 		this.getObserver().fireModulePerformedEvent(this,img);
 		
-		this.setPrev(to);
+		this.setPrev(toGray);
 		
 		return img;
 	}
@@ -153,11 +157,11 @@ public class ModuleOpticalFlowRigidTransform extends DefaultModule implements IM
 		this.debug = debug;
 	}
 
-	public ModuleOpticalFlowRigidTransformationDebugGUI getDebugGui() {
+	public ModuleECCTransformationDebugGUI getDebugGui() {
 		return this.debugGui;
 	}
 
-	public void setDebugGui(ModuleOpticalFlowRigidTransformationDebugGUI debugGui) {
+	public void setDebugGui(ModuleECCTransformationDebugGUI debugGui) {
 		this.debugGui = debugGui;
 	}
 

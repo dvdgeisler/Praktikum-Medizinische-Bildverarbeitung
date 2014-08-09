@@ -62,27 +62,27 @@ public class ModuleOpticalFlowLK extends DefaultModule implements IModule {
 		if(this.getConfiguration().isIntegerKey(CONFIGURATION_KEY_MAX_CORNERS))
 			this.setMaxCorners(this.getConfiguration().getInteger(CONFIGURATION_KEY_MAX_CORNERS));
 		else
-			Logger.getGlobal().warning(
+			Logger.global.warning(
 					String.format("maximal corners not specified in configuration! use default: %d", this.getMaxCorners()));
 
 		
 		if(this.getConfiguration().isDoubleKey(CONFIGURATION_KEY_QUALITY_LEVEL))
 			this.setQualityLevel(this.getConfiguration().getDouble(CONFIGURATION_KEY_QUALITY_LEVEL));
 		else
-			Logger.getGlobal().warning(
+			Logger.global.warning(
 					String.format("quality level not specified in configuration! use default: %f", this.getQualityLevel()));
 
 		
 		if(this.getConfiguration().isDoubleKey(CONFIGURATION_KEY_MIN_FEATURE_DISTANCE))
 			this.setMinDistance(this.getConfiguration().getDouble(CONFIGURATION_KEY_MIN_FEATURE_DISTANCE));
 		else
-			Logger.getGlobal().warning(
+			Logger.global.warning(
 					String.format("minimal feature distance not specified in configuration! use default: %f", this.getMinDistance()));
 		
 		if(this.getConfiguration().isBooleanKey(CONFIGURATION_KEY_DEBUG))
 			this.setDebug(this.getConfiguration().getBoolean(CONFIGURATION_KEY_DEBUG));
 		else
-			Logger.getGlobal().warning(
+			Logger.global.warning(
 					String.format("debug mode not specified in configuration! use default: %s", Boolean.toString(this.isDebug())));
 		
 		if(this.isDebug())
