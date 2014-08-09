@@ -153,7 +153,15 @@ public class ModuleManager implements IModuleManager {
 				module.setModuleManager(this);
 				this.addModule(moduleConfiguration.getModuleId(), module);
 				this.getObserver().fireModuleLoadedEvent(this, module, moduleConfiguration.getModuleId());
-			} catch (ClassNotFoundException | InstantiationException | IllegalAccessException | IllegalArgumentException | SecurityException e) {
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			} catch (InstantiationException e) {
+				e.printStackTrace();
+			} catch (IllegalAccessException e) {
+				e.printStackTrace();
+			} catch (IllegalArgumentException e) {
+				e.printStackTrace();
+			} catch (SecurityException e) {
 				e.printStackTrace();
 			}
 		
