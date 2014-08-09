@@ -1,7 +1,17 @@
 package de.uni_tuebingen.gris.pmb.module;
 
-import de.uni_tuebingen.gris.pmb.config.IConfigurable;
+import java.util.List;
 
-public interface IModuleManagerConfiguration extends IConfigurable {
+import de.uni_tuebingen.gris.pmb.config.IConfigurationSection;
 
+public interface IModuleManagerConfiguration extends IConfigurationSection {
+
+    static final String PROPERTY_KEY_MODULE_CONFIGURATIONS = "modules";
+    static final String PROPERTY_KEY_MODULE_LOAD_PATHS = "paths";
+
+	public IModuleConfiguration getModuleConfiguration(String moduleId);
+	
+	public List<IModuleConfiguration> getModuleConfigurations();
+	
+	public List<String> getLoadPaths();
 }

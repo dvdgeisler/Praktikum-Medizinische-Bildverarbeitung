@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>PMBFrameworkLib</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>org.eclipse.jdt.core.javabuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>org.eclipse.jdt.core.javanature</nature>
+	</natures>
+	<linkedResources>
+		<link>
+			<name>opencv</name>
+			<type>2</type>
+			<location>/home/david/Documents/Studium/Praktikum_Medizinische_Bildverarbeitung/Repositories/Branches/OpenCV/build/src</location>
+		</link>
+	</linkedResources>
+</projectDescription>

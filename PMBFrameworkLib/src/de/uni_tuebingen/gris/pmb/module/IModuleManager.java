@@ -7,6 +7,11 @@ public interface IModuleManager extends IObservable<IModuleManagerListener> {
   
 	/**
 	 * TODO no doc
+	 */
+	void loadModules();
+	
+	/**
+	 * TODO no doc
 	 * @param id
 	 * @return
 	 */
