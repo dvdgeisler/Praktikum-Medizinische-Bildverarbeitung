@@ -2,7 +2,7 @@ package de.uni_tuebingen.gris.pmb.module;
 
 import java.util.logging.Logger;
 
-import org.opencv.highgui.VideoCapture;
+import org.opencv.videoio.VideoCapture;
 
 import de.uni_tuebingen.gris.pmb.data.DefaultImage;
 import de.uni_tuebingen.gris.pmb.data.IImage;
@@ -40,7 +40,7 @@ public class ModuleVideoReader extends DefaultModule implements IModule {
 		if(this.getConfiguration().isBooleanKey(CONFIGURATION_KEY_DEBUG))
 			this.setDebug(this.getConfiguration().getBoolean(CONFIGURATION_KEY_DEBUG));
 		else
-			Logger.getGlobal().warning(
+			Logger.global.warning(
 					String.format("maximal corners not specified in configuration! use default: %s", Boolean.toString(this.isDebug())));
 		
 		if(this.isDebug())
@@ -68,7 +68,7 @@ public class ModuleVideoReader extends DefaultModule implements IModule {
 		
 		img = new DefaultImage();
 		if(!this.getVideoCapture().read(img.getData()))
-			Logger.getGlobal().info("End of video stream");
+			Logger.global.info("End of video stream");
 		
 		this.getObserver().fireModulePerformedEvent(this, img);
 		
