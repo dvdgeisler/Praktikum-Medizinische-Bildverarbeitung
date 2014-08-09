@@ -8,7 +8,7 @@
 	<property name="src" location="src" />
 	<property name="build" location="build" />
 	<property name="dist" location="dist" />
-    <property name="OpenCVLib" location="../../../../lib/opencv-2.4.9/opencv-300.jar" />
+    <property name="OpenCVLib" location="/home/david/Documents/Studium/Praktikum_Medizinische_Bildverarbeitung/Repositories/Branches/OpenCV/bin/opencv-300.jar" />
 	
 	<target name="init">
 		<!-- Create the time stamp -->

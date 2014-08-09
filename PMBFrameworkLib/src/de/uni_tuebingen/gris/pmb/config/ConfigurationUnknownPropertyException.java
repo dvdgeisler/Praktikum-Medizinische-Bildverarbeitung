@@ -18,17 +18,6 @@ public class ConfigurationUnknownPropertyException extends Exception {
 	 * TODO no doc
 	 * @param message
 	 * @param cause
-	 * @param enableSuppression
-	 * @param writableStackTrace
-	 */
-	public ConfigurationUnknownPropertyException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
-		super(message, cause, enableSuppression, writableStackTrace);
-	}
-
-	/**
-	 * TODO no doc
-	 * @param message
-	 * @param cause
 	 */
 	public ConfigurationUnknownPropertyException(String message, Throwable cause) {
 		super(message, cause);

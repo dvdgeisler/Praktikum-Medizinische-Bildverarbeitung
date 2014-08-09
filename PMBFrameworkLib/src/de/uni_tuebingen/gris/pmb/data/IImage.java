@@ -11,4 +11,12 @@ public interface IImage {
 	Object getAnnotation(String key);
 	
 	Object removeAnnotation(String key);
+
+	int getType();
+	
+	int getWidth();
+	
+	int getHeight();
+
+	int getSize();
 }
