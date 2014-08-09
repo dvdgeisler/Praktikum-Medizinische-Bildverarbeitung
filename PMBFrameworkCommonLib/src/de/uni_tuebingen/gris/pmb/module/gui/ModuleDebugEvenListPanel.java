@@ -1,7 +1,6 @@
 package de.uni_tuebingen.gris.pmb.module.gui;
 
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;

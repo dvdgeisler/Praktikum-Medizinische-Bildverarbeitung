@@ -35,4 +35,24 @@ public class DefaultImage implements IImage {
 		return this.data;
 	}
 
+	@Override
+	public int getType() {
+		return this.getData().type();
+	}
+
+	@Override
+	public int getWidth() {
+		return this.getData().width();
+	}
+
+	@Override
+	public int getHeight() {
+		return this.getData().height();
+	}
+
+	@Override
+	public int getSize() {
+		return this.getWidth() * this.getHeight();
+	}
+
 }

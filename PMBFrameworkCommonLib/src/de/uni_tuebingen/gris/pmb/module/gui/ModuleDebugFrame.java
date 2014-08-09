@@ -9,19 +9,13 @@ import java.awt.Image;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
 import java.util.LinkedList;
 
-import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JToggleButton;
 import javax.swing.SwingUtilities;
 
-import org.opencv.core.MatOfByte;
-import org.opencv.highgui.Highgui;
-
+import de.uni_tuebingen.gris.pmb.awt.AWTImageWrapper;
 import de.uni_tuebingen.gris.pmb.module.IModule;
 import de.uni_tuebingen.gris.pmb.module.IModuleDeinitializedEvent;
 import de.uni_tuebingen.gris.pmb.module.IModuleInitializedEvent;
@@ -45,24 +39,17 @@ public abstract class ModuleDebugFrame<T extends IModule> extends JFrame impleme
 
 		public ModulePerformedEventContainer(IModulePerformedEvent event, long time, float fps, int count) {
 			super(event);
-			MatOfByte matBytes;
-			BufferedImage fullImage;
+			Image fullImage;
 			Image scaledImage;
 			
 			this.fps = fps;
 			this.time = time;			
 			fullImage = null;
 			scaledImage = null;
-			matBytes = new MatOfByte();
-			Highgui.imencode(".jpg", this.getImage().getData(), matBytes);
-			try {
-				fullImage = ImageIO.read(new ByteArrayInputStream(matBytes.toArray()));
-				scaledImage = fullImage.getScaledInstance(
-								(int) (fullImage.getWidth(null)*(50d/fullImage.getHeight(null))), 50, Image.SCALE_FAST);
-				ModuleDebugFrame.this.drawImageDetails(fullImage.getGraphics(),event);
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+			fullImage = new AWTImageWrapper(this.getImage());
+			scaledImage = fullImage.getScaledInstance(
+							(int) (fullImage.getWidth(null)*(50d/fullImage.getHeight(null))), 50, Image.SCALE_FAST);
+			ModuleDebugFrame.this.drawImageDetails(fullImage.getGraphics(),event);
 			this.fullImage = fullImage;
 			this.scaledImage = scaledImage;
 			this.count = count;
@@ -240,7 +227,7 @@ public abstract class ModuleDebugFrame<T extends IModule> extends JFrame impleme
 		this.getEventPreviewPanel().refresh();
 		this.getEvenDetailsPanel().refresh();
 		
-		this.revalidate();
+		this.repaint();
 	}
 
 	@Override

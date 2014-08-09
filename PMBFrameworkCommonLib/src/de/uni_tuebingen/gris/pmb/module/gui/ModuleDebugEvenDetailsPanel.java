@@ -108,7 +108,7 @@ public class ModuleDebugEvenDetailsPanel extends JPanel {
 			this.getFrameTimeTextField().setText(String.format("%d", this.getFrame().getCurrentFrame().getTime()));
 			this.getProcessDetailsPanel().add(this.getFrame().getCurrentFrame().getProcessDetailsPanel());
 		}
-		this.repaint();
+		this.revalidate();
 	}
 
 	public ModuleDebugFrame<? extends IModule> getFrame() {

@@ -47,9 +47,8 @@ public class ModuleDebugEventPreviewPanel extends JPanel {
 		iheight = (int) (height * yScale);
 		x = (this.getWidth() - iwidth)/2;
 		y = (this.getHeight() - iheight)/2;
-				
+
 		g.drawImage(event.getFullImage().getScaledInstance(iwidth, iheight, Image.SCALE_SMOOTH), x, y, null);
-		
 	}
 	
 	public void refresh() {
