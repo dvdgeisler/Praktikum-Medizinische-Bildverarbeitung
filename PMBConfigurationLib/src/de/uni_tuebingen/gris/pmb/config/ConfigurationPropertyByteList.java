@@ -1,13 +1,15 @@
 package de.uni_tuebingen.gris.pmb.config;
 
+import java.util.ArrayList;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement(name="float")
+@XmlRootElement(name="bytes")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class ConfigurationPropertyFloat extends ConfigurationProperty<Float> implements IConfigurationPropertyFloat {
+public class ConfigurationPropertyByteList extends ConfigurationProperty<ArrayList<Byte>> implements IConfigurationPropertyByteList {
 
 	/**
 	 * TODO no doc
@@ -15,17 +17,17 @@ public class ConfigurationPropertyFloat extends ConfigurationProperty<Float> imp
 	private static final long serialVersionUID = -8331402891130909730L;
 
 	@XmlAttribute(required=true, name="value")
-	private Float value;
+	private ArrayList<Byte> value;
 	
-	public ConfigurationPropertyFloat() {
+	public ConfigurationPropertyByteList() {
 		super();
 	}
 
-	public ConfigurationPropertyFloat(ConfigurationPropertyFloat configurationProperty) {
+	public ConfigurationPropertyByteList(ConfigurationPropertyByteList configurationProperty) {
 		this(configurationProperty.getKey(),configurationProperty.getValue());
 	}
 
-	public ConfigurationPropertyFloat(String key, Float value) {
+	public ConfigurationPropertyByteList(String key, ArrayList<Byte> value) {
 		super(key);
 		this.value = value;
 	}
@@ -34,12 +36,12 @@ public class ConfigurationPropertyFloat extends ConfigurationProperty<Float> imp
 	 * TODO no doc
 	 */
 	@Override
-	public ConfigurationPropertyFloat clone() {
-		return new ConfigurationPropertyFloat(this);
+	public ConfigurationPropertyByteList clone() {
+		return new ConfigurationPropertyByteList(this);
 	}
 
 	@Override
-	public Float getValue() {
+	public ArrayList<Byte> getValue() {
 		return this.value;
 	}
 
@@ -59,7 +61,7 @@ public class ConfigurationPropertyFloat extends ConfigurationProperty<Float> imp
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		ConfigurationPropertyFloat other = (ConfigurationPropertyFloat) obj;
+		ConfigurationPropertyByteList other = (ConfigurationPropertyByteList) obj;
 		if (value == null) {
 			if (other.value != null)
 				return false;
